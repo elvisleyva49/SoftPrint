@@ -1,0 +1,162 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1f1f1f;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 380px;
+    color: white;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+/* íconos */
+.input-icon {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-icon input {
+    width: 85%;
+    padding: 12px 12px 12px 40px; 
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+}
+
+.input-icon i {
+    position: absolute;
+    top: 65%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2b51ce;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-forgot a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #888;
+    margin: 20px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #888;
+}
+
+.or-divider::before {
+    margin-right: 10px;
+}
+
+.or-divider::after {
+    margin-left: 10px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 20px;
+}
+
+button.social-btn {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%; 
+    font-size: 16px;
+    max-width: 250px; 
+}
+
+button.social-btn img {
+    margin-right: 8px;
+}
+
+button.social-btn.google {
+    background-color: #444444;
+}
+
+button.social-btn.google:hover {
+    background-color: #3b3b3b;
+}
+
+button.social-btn.google img {
+    filter: none; 
+}
+
+/* Animación de transición */
+.fade-in {
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

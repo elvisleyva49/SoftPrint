@@ -1,0 +1,21 @@
+
+TARJETA:
+Visa    
+4111 1111 1111 1111	09/25	123	Venta exitosa
+
+Mastercard  
+5111 1111 1111 1118	06/25	039	Venta exitosa
+
+Amex
+3712 1212 1212 122	11/25	2841	Venta exitosa
+
+Visa
+4000 0400 0000 0008	03/25	295	insufficient_funds
+
+Mastercard
+5400 0200 0000 0003	07/25	203	incorrect_cvv
+
+
+YAPE:
+Nro celular: 900 000 001
+Código de verificación: 6 dígitos aleatorios (pueden ingresar cualquier número)

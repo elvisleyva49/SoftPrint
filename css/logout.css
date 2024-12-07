@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #272727; 
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900;
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.05em; 
+}
+
+p {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(14px, 2vw, 18px); 
+    margin-bottom: 30px;
+    color: #c2c2c2;
+    line-height: 1.6;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.2); 
+    border-top: 8px solid #0735cc; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto; 
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

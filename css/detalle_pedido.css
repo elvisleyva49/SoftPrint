@@ -1,0 +1,163 @@
+/* Estilos generales */
+body {
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #d0e7ff, #ffffff);
+    animation: move 4s linear infinite;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-out;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 35px;
+    color: white;
+    background-color: #041291;
+    border-radius: 10px;
+    padding: 15px 0;
+    letter-spacing: 1px;
+    font-weight: 600;
+    animation: slideIn 1s ease-out;
+    text-decoration: none;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #041291;
+    text-decoration: none;
+}
+
+td {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+/* Estilo del botón "Volver" */
+.btn-volver {
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #007bff, #041291); /* Degradado de celeste a azul */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px; /* Bordes redondeados */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Centrado */
+}
+
+.btn-volver i {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+    text-decoration: none;
+}
+
+/* Efecto hover para el botón */
+.btn-volver:hover {
+    background: linear-gradient(to right, #041291, #007bff); /* Invertir colores en hover */
+    transform: translateY(-2px); /* Ligeramente más arriba cuando el mouse pasa por encima */
+    text-decoration: none;
+}
+
+
+
+/* Botón de acción (Prediseño) */
+button {
+    background-color: #041291; /* Celeste */
+    color: white;
+    padding: 8px 28px; /* Botón más grande */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #041291; /* Celeste más oscuro */
+}
+
+/* Modal de Imagen */
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal.show {
+    display: flex;
+}
+
+#modal img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#modal span {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(-30px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}

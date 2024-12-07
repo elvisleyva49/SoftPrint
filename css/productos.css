@@ -1,0 +1,173 @@
+.products-container {
+    background-color: #1c2331;
+    padding: 80px 150px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.products {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 100px; 
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 310px; 
+    height: 390px; 
+    perspective: 1000px;
+    box-sizing: border-box; 
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #8a8888, #7e7e7e, #c7c7c7);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transform: rotateY(180deg);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                inset -1px -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.product-details {
+    text-align: center; 
+}
+
+.card-text {
+    font-family: 'Poppins', sans-serif !important;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.products-title {
+    text-align: center;
+    font-size: 5rem;
+    font-family: 'Poppins', sans-serif !important;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/*iconos */
+.product-details i {
+    margin-right: 10px; 
+}
+
+.flip-card-back p {
+    margin-bottom: 10px; 
+}
+
+hr {
+    margin: 20px 0; 
+}
+
+@media (max-width: 1024px) {
+    .products {
+        justify-content: center; 
+    }
+    .flip-card {
+        width: 300px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .products {
+        justify-content: center; 
+    }
+    .flip-card {
+        width: 300px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        justify-content: center; 
+    }
+    .flip-card {
+        width: 300px; 
+    }
+}
+
+
+.centro {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    margin: 0;               
+    padding-top: 20px;
+}
+
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 15px;
+    background-color: #ff8800;
+    outline: 3px;
+    outline-offset: -3px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.button .text {
+    color: white;
+    font-weight: 700;
+    font-size: 1em;
+    transition: 400ms;
+    margin-top: 10px;	
+}
+
+.button svg path {
+    transition: 400ms;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+.button:hover .text {
+    color: #181717;
+}
+
+.button:hover svg path {
+    fill: #181717;
+}
