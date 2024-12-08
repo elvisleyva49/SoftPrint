@@ -60,9 +60,10 @@ if (empty($imageUrl)) {
     <canvas id="renderCanvas"></canvas>
 
     <!-- Botón de regresar centrado en la parte inferior -->
-    <button type="button" class="back-button" onclick="window.location.href='/vistas/generarimagen.php';">
-        <i class="fas fa-arrow-left"></i> Regresar
-    </button>
+    <button type="button" class="back-button" onclick="window.close();">
+    <i class="fas fa-arrow-left"></i> Cerrar
+</button>
+
 
     <script>
         const canvas = document.getElementById('renderCanvas');

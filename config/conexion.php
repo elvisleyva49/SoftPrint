@@ -1,7 +1,7 @@
 <?php
 class BaseDeDatos {
     private $host = "localhost";
-    private $puerto = "3307";
+    private $puerto = "3306";
     private $nombre_bd = "bdimprenta";
     private $usuario = "root";
     private $contrasena = "";

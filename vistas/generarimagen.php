@@ -312,16 +312,13 @@ class ImageGeneratorPage {
                         <a href="<?php echo htmlspecialchars($imageUrl); ?>" target="_blank" class="button-link">
                             <i class="fas fa-external-link-alt"></i> Abrir imagen en nueva pestaña
                         </a>
-                        <a href="ver3d.php?imagen=<?php echo urlencode($imageUrl); ?>" class="button-link">
+                        <a href="ver3d.php?imagen=<?php echo urlencode($imageUrl); ?>" target="_blank" class="button-link">
                             <i class="fas fa-cube"></i> Ver en 3D
                         </a>
                         <button onclick="copyToClipboard('<?php echo htmlspecialchars($imageUrl); ?>')" class="button-link">
                             <i class="fas fa-copy"></i> Copiar URL al portapapeles
                         </button>
                     
-                        <button type="button" onclick="window.history.go(-2);">
-                            <i class="fas fa-arrow-left"></i> Registrar Imagen
-                        </button>
                     </p>
                 <?php endif; ?>
                 <script>

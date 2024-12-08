@@ -28,6 +28,7 @@
             'nom_imagen' => 'tarjetas',
             'descripcion' => 'Impacta con estilo. Elige entre una variedad de estilos, acabados y materiales que destacan tu marca con calidad.',
             'tiempo' => '3 días',
+            'estatico' => true,
             'precios' => [
                 'Tarjeta Mate Millar' => ['precio' => 75.00, 'insumo' =>'16','altura' => '5.5 cm', 'ancho' => '9 cm'],
                 'Tarjeta Brillo Millar' => ['precio' => 55.00,'insumo' =>'17', 'altura' => '5.5 cm', 'ancho' => '9 cm'],
@@ -38,6 +39,7 @@
             'nom_imagen' => 'volantes',
             'descripcion' => 'Destaca con volantes publicitarios de alta calidad. Selecciona entre múltiples estilos y tamaños que realzan la imagen de tu marca.',
             'tiempo' => '3 días',
+            'estatico' => true,
             'precios' => [
                 'A6 Millar Volantes' => ['precio' => 70.00, 'insumo' =>'13', 'altura' => '10.5 cm', 'ancho' => '14.8 cm'],
                 'A5 Millar Volantes' => ['precio' => 140.00,'insumo' =>'12', 'altura' => '14.8 cm', 'ancho' => '21 cm'],
@@ -50,6 +52,7 @@
             'nom_imagen' => 'stickers',
             'descripcion' => 'Crea diseños únicos. Ofrecemos stickers adhesivos personalizados a gusto del cliente de alta calidad.',
             'tiempo' => '20 Minutos x m²',
+            'estatico' => false,
             'precios' => [
                 'm² Económico' => ['precio' => 22.00, 'insumo' =>'18', 'altura' => '', 'ancho' => ''],
                 'm² Premium' => ['precio' => 25.00, 'insumo' =>'19', 'altura' => '', 'ancho' => ''],
@@ -60,6 +63,7 @@
             'nom_imagen' => 'banners',
             'descripcion' => 'Celebra momentos especiales con banners impresos para cumpleaños, publicidad o personalizados.',
             'tiempo' => '20 Minutos x m²',
+            'estatico' => false,
             'precios' => [
                 'Banner Delgado (8 onz) m²' => ['precio' => 8.00, 'insumo' =>'1', 'altura' => '', 'ancho' => ''],
                 'Banner Grueso (10 onz) m²' => ['precio' => 10.00, 'insumo' =>'5', 'altura' => '', 'ancho' => ''],
@@ -70,6 +74,7 @@
             'nom_imagen' => 'lonas',
             'descripcion' => 'Lonas translúcidas personalizadas, ideales para destacar tu negocio con grandes tamaños y colores vibrantes.',
             'tiempo' => '30 Minutos x m²',
+            'estatico' => false,
             'precios' => [
                 'Lona m²' => ['precio' => 8.00, 'insumo' =>'8', 'altura' => '', 'ancho' => ''],
             ]
@@ -79,6 +84,7 @@
             'nom_imagen' => 'roll',
             'descripcion' => 'Muestra tu mensaje de forma impactante con roll screens. Perfectos para eventos y promociones.',
             'tiempo' => 'Medio Día',
+            'estatico' => true,
             'precios' => [
                 'Estructura + Impresión (1m x 0.85m)' => ['precio' => 90.00, 'insumo' =>'14', 'altura' => '100 cm', 'ancho' => '0.85 cm'],
                 'Estructura + Impresión (1m x 2m)' => ['precio' => 115.00, 'insumo' =>'15', 'altura' => '100 cm', 'ancho' => '200 cm'],
@@ -89,6 +95,7 @@
             'nom_imagen' => 'pines',
             'descripcion' => 'Pines personalizados de alta calidad, ideales para promocionar tu marca o como regalos corporativos.',
             'tiempo' => '100 Unidades en Medio Día',
+            'estatico' => true,
             'precios' => [
                 '100 Unidades' => ['precio' => 70.00, 'insumo' =>'21', 'altura' => '5 cm', 'ancho' => '5 cm'],
             ]
@@ -98,6 +105,7 @@
             'nom_imagen' => 'llaveros',
             'descripcion' => 'Llaveros personalizados de alta calidad, ideales para promocionar tu marca o como regalos corporativos.',
             'tiempo' => '100 Unidades en Medio Día',
+            'estatico' => true,
             'precios' => [
                 '100 Unidades' => ['precio' => 70.00, 'insumo' =>'20', 'altura' => '5 cm', 'ancho' => '5 cm'],
             ]
@@ -175,17 +183,28 @@
 
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" onchange="updateTotalAndDimensions()">
+                    <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" oninput="calculateTotal()" onkeypress="return preventEnter(event)" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="product-altura" class="form-label">Altura:</label>
-                    <input type="text" id="product-altura" class="form-control" placeholder="Ingrese una medida en cm">
+                    <label for="product-altura" class="form-label">Altura (cm):</label>
+                    <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
+                        id="product-altura" 
+                        class="form-control" 
+                        placeholder="Ingrese una medida en cm" 
+                        onkeypress="return preventEnter(event)" 
+                        <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
+
                 </div>
 
                 <div class="mb-3">
-                    <label for="product-ancho" class="form-label">Ancho:</label>
-                    <input type="text" id="product-ancho" class="form-control" placeholder="Ingrese una medida en cm">
+                    <label for="product-ancho" class="form-label">Ancho (cm):</label>
+                    <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
+                        id="product-ancho" 
+                        class="form-control" 
+                        placeholder="Ingrese una medida en cm" 
+                        onkeypress="return preventEnter(event)" 
+                        <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
                 </div>
 
                 <div class="mb-3">
@@ -194,20 +213,20 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Descripción adicional:</label>
-                    <input type="text" id="description" name="description" class="form-control" placeholder="Ingrese una descripción adicional">
+                    <input type="text" id="description" name="description" class="form-control" placeholder="Ingrese una descripción adicional" onkeypress="return preventEnter(event)">
                 </div>
 
                 <!-- Generar imagen y pegar URL -->
                 <div class="mb-3">
                     <label for="generate-image" class="form-label">¿Quieres generar una imagen del diseño?</label>
-                    <a href="../vistas/generarimagen.php?product_id=<?php echo $product_id; ?>" class="btn btn-primary">
+                    <a href="../vistas/generarimagen.php?product_id=<?php echo $product_id; ?>" target="_blank" class="btn btn-primary">
                         <i class="fas fa-brain"></i> Generar Imagen
                     </a>
                 </div>
 
                 <div class="mb-3">
                     <label for="image-url" class="form-label">Pega la URL copiada del diseño:</label>
-                    <input type="text" id="image-url" name="image_url" class="form-control" placeholder="Pega aquí la URL de la imagen generada">
+                    <input type="text" id="image-url" name="image_url" class="form-control" placeholder="Pega aquí la URL de la imagen generada" onkeypress="return preventEnter(event)">
                 </div>
 
                 <div class="d-flex justify-content-start gap-2 mb-3">
@@ -221,7 +240,7 @@
                         <i class="fas fa-save"></i> Guardar Pedido
                     </button>
                 </div>
-                
+
                 <input type="hidden" name="id_cliente" value="<?php echo $_SESSION['id_cliente']; ?>"> 
                 <input type="hidden" name="id_producto" value="<?php echo $product_id; ?>"> 
                 <input type="hidden" name="total" id="total-input">
@@ -230,8 +249,6 @@
                 <input type="hidden" id="hidden-ancho" name="ancho">
                 <input type="hidden" id="hidden-insumo" name="insumo">
                 <input type="hidden" id="image-url-input" name="image_url">
-
-
             </form>
         </div>
     </div>
@@ -246,7 +263,7 @@
         });
     }
 
-    function updateTotalAndDimensions() {
+    function calculateTotal() {
         const selectedOption = document.querySelector('#product-type option:checked');
         const precio = parseFloat(selectedOption.dataset.precio);
         const cantidad = parseInt(document.getElementById('cantidad').value);
@@ -254,16 +271,42 @@
 
         document.getElementById('total').innerText = total.toFixed(2);
         document.getElementById('total-input').value = total.toFixed(2);
-        document.getElementById('product-altura').value = selectedOption.dataset.altura;
-        document.getElementById('product-ancho').value = selectedOption.dataset.ancho;
-        document.getElementById('hidden-altura').value = selectedOption.dataset.altura;
-        document.getElementById('hidden-ancho').value = selectedOption.dataset.ancho;
-        document.getElementById('hidden-insumo').value = selectedOption.dataset.insumo;
+    }
+
+    function updateDimensions() {
+        const selectedOption = document.querySelector('#product-type option:checked');
+        const altura = selectedOption.dataset.altura;
+        const ancho = selectedOption.dataset.ancho;
+        const insumo = selectedOption.dataset.insumo;
+
+        document.getElementById('hidden-altura').value = altura;
+        document.getElementById('hidden-ancho').value = ancho;
+        document.getElementById('hidden-insumo').value = insumo;
+
+        // Solo actualizar campos de altura y ancho si no está en modo 'estático'
+        const isStatic = <?php echo $producto['estatico'] ? 'true' : 'false'; ?>;
+        if (isStatic) {
+            // Si es estatico, mantiene los valores actuales sin cambiar
+            document.getElementById('product-altura').value = altura;
+            document.getElementById('product-ancho').value = ancho;
+        }
+        // Si no es estatico, los campos se mantienen igual (no se actualizan)
+    }
+
+    function updateTotalAndDimensions() {
+        calculateTotal(); // Calcula el total
+        updateDimensions(); // Actualiza las dimensiones solo si el tipo de producto cambia
     }
 
     function submitForm() {
         document.getElementById('description-input').value = document.getElementById('description').value;
         document.getElementById('image-url-input').value = document.getElementById('image-url').value;
+    }
+
+    function preventEnter(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
     }
 
     // Inicializa el total y las dimensiones cuando se cargue la página
