@@ -131,275 +131,139 @@
     $producto = $productos[$product_id];
     ?>
     <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalle del Producto - <?php echo $producto['nombre']; ?></title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="../css/barranavegacion.css">
-    </head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto - <?php echo $producto['nombre']; ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 
-    <style>
-        body {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #d0e7ff, #ffffff);
+    }
 
-        .container {
-            width: 100%;
-            margin: 80px auto;
-            padding: 20px;
-        }
+</style>
 
-        .row {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+<body>
+<div class="container py-5">
+    <div class="row">
+        <!-- Imagen del Producto -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center mt-5" style="height: 100%;">
+            <img src="../img/<?php echo strtolower(str_replace(' ', '_', $producto['nom_imagen'])); ?>.jpg" alt="Imagen de <?php echo $producto['nombre']; ?>" class="img-fluid rounded">
+        </div>
 
-        .col-md-5 {
-            flex: 1;
-            min-width: 400px;
-        }
+        <!-- Detalles del Producto -->
+        <div class="col-md-6">
+            <h1><?php echo $producto['nombre']; ?></h1>
+            <p class="lead"><?php echo $producto['descripcion']; ?></p>
+            <p><strong>Tiempo de entrega:</strong> <?php echo $producto['tiempo']; ?></p>
 
-
-        .product-image {
-            text-align: center;
-        }
-
-        .product-image img {
-            margin-top: 50px;
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-info {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-info h1 {
-            font-size: 20px;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        .product-info p {
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .prices ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .prices li {
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-
-        input, select {
-            font-size: 14px;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 100%;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button.btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        button.btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        button.btn-success {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        button.btn-success:hover {
-            background-color: #218838;
-        }
-
-        button.btn-secondary {
-            background-color: #6c757d;
-            color: #fff;
-        }
-
-        button.btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .product-image {
-            text-align: center;
-        }
-
-        .product-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-image img:hover {
-            transform: scale(1.05);
-        }
-
-    </style>
-
-    <body>
-    <?php include('../vistas/barranavegacion2.php'); ?> <!-- Barra de navegación arriba -->
-    
-    <div class="container py-6">
-        <div class="row">
-            <!-- Imagen del Producto -->
-            <div class="col-md-5 product-image">
-                <img id="main-product-image" 
-                     src="../img/<?php echo strtolower(str_replace(' ', '_', $producto['nom_imagen'])); ?>.jpg" 
-                     alt="Imagen de <?php echo $producto['nombre']; ?>" 
-                     class="img-fluid">
+            <div class="my-4">
+                <h4>Precios:</h4>
+                <ul>
+                    <?php foreach ($producto['precios'] as $tipo => $detalle): ?>
+                        <li>
+                            <?php echo $tipo; ?>: <strong>s/.<?php echo number_format($detalle['precio'], 2); ?></strong>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
 
-            <!-- Detalles del Producto -->
-            <div class="col-md-6">
-                <h1><?php echo $producto['nombre']; ?></h1>
-                <p class="lead"><?php echo $producto['descripcion']; ?></p>
-                <p><strong>Tiempo de entrega:</strong> <?php echo $producto['tiempo']; ?></p>
-
-                <div class="my-3">
-                    <h4>Precios:</h4>
-                    <ul>
+            <form method="POST" action="../controladores/pedidosControlador.php?accion=registrarPedido">
+                <div class="mb-3">
+                    <label for="product-type" class="form-label">Selecciona el tipo:</label>
+                    <select id="product-type" name="product-type" class="form-select" onchange="updateTotalAndDimensions()">
                         <?php foreach ($producto['precios'] as $tipo => $detalle): ?>
-                            <li>
-                                <?php echo $tipo; ?>: <strong>s/.<?php echo number_format($detalle['precio'], 2); ?></strong>
-                            </li>
+                            <option value="<?php echo $tipo; ?>" data-precio="<?php echo $detalle['precio']; ?>" 
+                                data-altura="<?php echo $detalle['altura']; ?>" 
+                                data-ancho="<?php echo $detalle['ancho']; ?>"
+                                data-insumo="<?php echo $detalle['insumo']; ?>">
+                                <?php echo $tipo; ?>
+                            </option>
                         <?php endforeach; ?>
-                    </ul>
+                    </select>
                 </div>
 
-                <form method="POST" action="../controladores/pedidosControlador.php?accion=registrarPedido">
-                    <div class="mb-3">
-                        <label for="product-type" class="form-label">Selecciona el tipo:</label>
-                        <select id="product-type" name="product-type" class="form-select" onchange="updateTotalAndDimensions()">
-                            <?php foreach ($producto['precios'] as $tipo => $detalle): ?>
-                                <option value="<?php echo $tipo; ?>" 
-                                        data-precio="<?php echo $detalle['precio']; ?>" 
-                                        data-altura="<?php echo $detalle['altura']; ?>" 
-                                        data-ancho="<?php echo $detalle['ancho']; ?>" 
-                                        data-insumo="<?php echo $detalle['insumo']; ?>">
-                                    <?php echo $tipo; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" oninput="calculateTotal()" onkeypress="return preventEnter(event)" required>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="cantidad" class="form-label">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" oninput="calculateTotal()" onkeypress="return preventEnter(event)" required>
-                    </div>
-
-                    <div class="mb-3">
+                <div class="mb-3">
                     <label for="product-altura" class="form-label">Altura (cm):</label>
-                        <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
-                            id="product-altura" 
-                            class="form-control" 
-                            placeholder="Ingrese una medida en cm" 
-                            onkeypress="return preventEnter(event)" 
-                            <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
-                    </div>
+                    <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
+                        id="product-altura" 
+                        class="form-control" 
+                        placeholder="Ingrese una medida en cm" 
+                        onkeypress="return preventEnter(event)" 
+                        <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
 
-                    <div class="mb-3">
+                </div>
+
+                <div class="mb-3">
                     <label for="product-ancho" class="form-label">Ancho (cm):</label>
-                        <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
-                            id="product-ancho" 
-                            class="form-control" 
-                            placeholder="Ingrese una medida en cm" 
-                            onkeypress="return preventEnter(event)" 
-                            <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
-                    </div>
+                    <input type="<?php echo $producto['estatico'] ? 'text' : 'number'; ?>" 
+                        id="product-ancho" 
+                        class="form-control" 
+                        placeholder="Ingrese una medida en cm" 
+                        onkeypress="return preventEnter(event)" 
+                        <?php echo $producto['estatico'] ? 'readonly' : ''; ?>>
+                </div>
 
-                    <div class="mb-3">
-                        <p><strong>Total: </strong>s/.<span id="total"><?php echo number_format(reset($producto['precios'])['precio'], 2); ?></span></p>
-                    </div>
+                <div class="mb-3">
+                    <p><strong>Total: </strong>s/.<span id="total"><?php echo number_format(reset($producto['precios'])['precio'], 2); ?></span></p>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Descripción adicional:</label>
-                        <input type="text" id="description" name="description" class="form-control" placeholder="Ingrese una descripción adicional" onkeypress="return preventEnter(event)">
-                    </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción adicional:</label>
+                    <input type="text" id="description" name="description" class="form-control" placeholder="Ingrese una descripción adicional" onkeypress="return preventEnter(event)">
+                </div>
 
-                    <!-- Generar imagen -->
-                    <div class="mb-3">
-                        <label for="generate-image" class="form-label">¿Quieres generar una imagen del diseño?</label>
-                        <a href="../vistas/generarimagen.php" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-brain"></i> Generar Imagen
-                        </a>
-                    </div>
+                <!-- Generar imagen y pegar URL -->
+                <div class="mb-3">
+                    <label for="generate-image" class="form-label">¿Quieres generar una imagen del diseño?</label>
+                    <a href="../vistas/generarimagen.php" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-brain"></i> Generar Imagen
+                    </a>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="image-url" class="form-label">Pega la URL copiada del diseño:</label>
-                        <input type="text" id="image-url" name="image_url" class="form-control" placeholder="Pega aquí la URL de la imagen generada" onkeypress="return preventEnter(event)">
-                    </div>
+                <div class="mb-3">
+                    <label for="image-url" class="form-label">Pega la URL copiada del diseño:</label>
+                    <input type="text" id="image-url" name="image_url" class="form-control" placeholder="Pega aquí la URL de la imagen generada" onkeypress="return preventEnter(event)">
+                </div>
 
-                    <div class="d-flex justify-content-start gap-2 mb-3">
-                        <button type="button" id="paste-url-btn" onclick="pasteUrl()" class="btn btn-secondary">
-                            <i class="fas fa-paste"></i> Pegar URL
-                        </button>
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save"></i> Guardar Pedido
-                        </button>
-                    </div>
+                <div class="d-flex justify-content-start gap-2 mb-3">
+                    <!-- Botón de Pegar URL -->
+                    <button type="button" id="paste-url-btn" onclick="pasteUrl()" class="btn btn-secondary">
+                        <i class="fas fa-paste"></i> Pegar URL
+                    </button>
 
-                    <!-- Campos ocultos -->
-                    <input type="hidden" name="id_cliente" value="<?php echo $_SESSION['id_cliente']; ?>"> 
-                    <input type="hidden" name="id_producto" value="<?php echo $product_id; ?>"> 
-                    <input type="hidden" name="total" id="total-input">
-                    <input type="hidden" id="hidden-altura" name="altura">
-                    <input type="hidden" id="hidden-ancho" name="ancho">
-                    <input type="hidden" id="hidden-insumo" name="insumo">
-                    <input type="hidden" id="image-url-input" name="image_url">
-                </form>
-            </div>
+                    <!-- Botón de Guardar Pedido -->
+                    <button type="submit" onclick="submitForm()" class="btn btn-success">
+                        <i class="fas fa-save"></i> Guardar Pedido
+                    </button>
+                </div>
+
+                <input type="hidden" name="id_cliente" value="<?php echo $_SESSION['id_cliente']; ?>"> 
+                <input type="hidden" name="id_producto" value="<?php echo $product_id; ?>"> 
+                <input type="hidden" name="total" id="total-input">
+                <input type="hidden" id="description-input" name="description">
+                <input type="hidden" id="hidden-altura" name="altura">
+                <input type="hidden" id="hidden-ancho" name="ancho">
+                <input type="hidden" id="hidden-insumo" name="insumo">
+                <input type="hidden" id="image-url-input" name="image_url">
+            </form>
         </div>
     </div>
-    <script>
-    const productType = document.getElementById('product-type');
-    const cantidad = document.getElementById('cantidad');
-    const total = document.getElementById('total');
-    const totalInput = document.getElementById('total-input');
-    const altura = document.getElementById('product-altura');
-    const ancho = document.getElementById('product-ancho');
-    const hiddenAltura = document.getElementById('hidden-altura');
-    const hiddenAncho = document.getElementById('hidden-ancho');
-    const hiddenInsumo = document.getElementById('hidden-insumo');
+</div>
 
+<script>
     function pasteUrl() {
         navigator.clipboard.readText().then(text => {
             document.getElementById('image-url').value = text;
@@ -456,20 +320,6 @@
 
     // Inicializa el total y las dimensiones cuando se cargue la página
     updateTotalAndDimensions();
-
-
-    // Agregamos un evento de clic a cada miniatura
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', () => {
-            // Cambiamos la fuente de la imagen principal al hacer clic
-            mainImage.src = thumbnail.src;
-        });
-    });
-
 </script>
-
-<?php include('../vistas/piepagina.php'); ?>
 </body>
 </html>
-
-

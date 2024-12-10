@@ -6,8 +6,8 @@ $id_pedido = $_GET['id_pedido'] ?? null;
 if (!$id_pedido || !is_numeric($id_pedido)) {
     die('ID de pedido no especificado o inválido.');
 }
-$id_pedido = $_SESSION['id_pedido'];
-
+/*session_start();
+$id_pedido = $_SESSION['id_pedido'];*/
 $controlador = new PedidosControlador();
 $datos = $controlador->verDetallePedido($id_pedido);
 $mostrarAltura = false;

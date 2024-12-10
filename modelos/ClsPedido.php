@@ -40,7 +40,7 @@ class ClsPedido{
                 INNER JOIN cliente c ON p.id_cliente = c.id_cliente
                 INNER JOIN detalle_pedido dp ON p.id_pedido = dp.id_pedido
                 LEFT JOIN empleado e ON p.id_empleado = e.id_empleado
-                WHERE p.id_empleado = :id_disenador";
+                WHERE p.id_empleado = :id_disenador ORDER BY p.fecha_pedido desc";
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id_disenador', $id_disenador, PDO::PARAM_INT);
@@ -56,7 +56,7 @@ class ClsPedido{
                 FROM pedido p
                 INNER JOIN cliente c ON p.id_cliente = c.id_cliente
                 INNER JOIN detalle_pedido dp ON p.id_pedido = dp.id_pedido
-                WHERE p.estado = 'pendiente'";
+                WHERE p.estado = 'pendiente' ORDER BY p.fecha_pedido desc";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
