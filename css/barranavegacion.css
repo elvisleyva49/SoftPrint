@@ -3,21 +3,17 @@
     position: fixed;
     width: 100%;
     display: flex;
-    align-items: center; /* Alinea verticalmente los elementos del nav */
-    padding: 25px;
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 20px;
     transition: all 0.5s ease;
     z-index: 9999;
-    justify-content: flex-end; 
     margin-left: auto; /* Empuja el menú hacia la derecha */
+    background-color: rgba(27, 27, 27, 0.548); /* Fondo con color transparente inicial */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores basados en WebKit */
 }
 
-
-
-.pagina-nav .logo {
-    font-size: 25px;
-    color: #000;
-    font-weight: 100;
-}
 
 /* Alinea el menú al lado derecho */
 .pagina-nav .menu {
@@ -26,12 +22,16 @@
     margin-left: auto; /* Empuja el menú hacia la derecha */
 }
 
+/* Centra los elementos del menú */
 .pagina-nav .menu li {
     list-style: none;
     margin: 0 15px;
     white-space: nowrap;
+    display: flex; /* Asegura que los elementos del menú se comporten como bloques flexibles */
+    align-items: center; /* Alineación vertical centrada */
 }
 
+/* Estilo de los enlaces del menú */
 .pagina-nav .menu li a {
     color: #fff;
     text-decoration: none;
@@ -40,6 +40,7 @@
     display: block;
 }
 
+/* Efecto al pasar el mouse por encima de los enlaces */
 .pagina-nav .menu li a:hover {
     padding: 5px 10px;
     background: #fff;
@@ -49,10 +50,12 @@
 
 /* Cambios cuando el nav está activo (scroll) */
 .pagina-nav .nav.active {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro al hacer scroll */
     padding: 15px;
+    backdrop-filter: none; /* Elimina el desenfoque al hacer scroll */
 }
 
+/* Cambios en los enlaces y logo cuando el nav está activo */
 .pagina-nav .nav.active .logo,
 .pagina-nav .nav.active a {
     color: #ffffff;

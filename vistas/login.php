@@ -53,15 +53,6 @@ require('../config/conf_recaptcha.php');
 
             <input type="submit" name="login" value="Iniciar Sesión">
         </form>
-
-        <div class="or-divider">O con</div>
-
-        <div class="social-buttons">
-            <button class="social-btn google">
-                <img src="../img/googleicono.png" alt="Google" width="20">
-                Continuar con Google
-            </button>
-        </div>
         <p>¿No tienes una cuenta? <a href="../vistas/registrar.php">Regístrate</a></p> 
     </div>
 

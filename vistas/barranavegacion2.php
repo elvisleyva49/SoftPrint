@@ -9,10 +9,10 @@
 <body class="pagina-nav">
     <nav class="nav">
         <ul class="menu">
-            <li><a href="index.php"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="#nosotros"><i class="fas fa-info-circle"></i> Nosotros</a></li>
-            <li><a href="#productos"><i class="fas fa-box-open"></i> Productos</a></li>
-            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contactanos</a></li>
+            <li><a href="../index.php"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="../#nosotros"><i class="fas fa-info-circle"></i> Nosotros</a></li>
+            <li><a href="../#productos"><i class="fas fa-box-open"></i> Productos</a></li>
+            <li><a href="../#contacto"><i class="fas fa-envelope"></i> Contactanos</a></li>
             
             <?php if (isset($_SESSION['usuario']) && $_SESSION['estado'] === 'activo'): ?>
                 <?php if ($_SESSION['tipo'] === 'admin'): ?>
@@ -39,6 +39,28 @@
             <?php endif; ?>
         </ul>
     </nav>
+
+    !-- Script animación de scroll-->
+    <script>
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', function(){
+            nav.classList.toggle('active', window.scrollY > 0);
+        });       
+    </script>
+        <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+
+        <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                verify: { projectID: '672ae3e41891ba0bf93f64a6' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+        </script>
 </body>
 </html>
-

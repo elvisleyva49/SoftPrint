@@ -49,7 +49,7 @@
     <div class="container text-center text-md-start mt-5">
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 d-flex align-items-center">
-          <img src="img/logo.png" alt="Company Logo" style="height: 150px; margin-left:-80px; margin-right: 5px;" >
+          <img src="../img/logo.png" alt="Company Logo" style="height: 150px; margin-left:-80px; margin-right: 5px;" >
     
         </div>
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">

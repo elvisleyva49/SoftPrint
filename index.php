@@ -21,7 +21,11 @@
     
     <!-- Contenido principal-->
     <main>
-        <?php include('vistas/inicio.php'); ?>
+        <!-- Sección Nosotros -->
+        <div id="inicio" class="overlay">
+            <?php include('vistas/inicio.php'); ?>
+        </div>    
+   
 
         <!-- Sección Nosotros -->
         <div id="nosotros" class="overlay">
