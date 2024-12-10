@@ -57,7 +57,7 @@ class UsuarioControlador {
                     $_SESSION['tipo'] = $resultado['tipo'];
                 }
                 if($resultado['tipo'] == 'cliente'){
-                    echo "<script>alert('Bienvenido, " . $email . ". ID Cliente: " . $_SESSION['id_cliente'] . ". Tipo: " . $_SESSION['tipo'] . "');</script>";
+                    echo "<script>alert('Bienvenido, " . $_SESSION['nombre'] . " al sistema: " . "');</script>";
                 // Redirigir a una página de bienvenida o a otra parte de la aplicación
                 }else{
                     echo "<script>alert('Bienvenido, " . $email . ". Tipo: " . $_SESSION['tipo'] . "');</script>";

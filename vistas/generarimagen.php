@@ -265,7 +265,7 @@ class ImageGeneratorPage {
         $productos_permitidos = [
             "banners publicitarios", "baner", "banner", "volantes", "volante",
             "tarjetas de presentación", "tarjeta presentación", "tarjetas",
-            "lonas luminosas", "lonas", "lona", "stickers adhesivos", "sticker",
+            "lonas luminosas", "lonas", "lona", "stickers adhesivos", "sticker", "ROLLSCREEN",
             "roll screens", "roll screen", "pines", "llaveros personalizados", 
             "llaveros","llavero", "publicitarios", "impresión", "material gráfico",
             "flyer", "folletos", "afiches", "material publicitario", 

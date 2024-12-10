@@ -1,22 +1,31 @@
 <?php
     session_start(); // Inicia la sesión
 
-    // Obtener el id del producto desde la URL
-    $product_id = $_GET['product_id'] ?? null;
-
     $img_url = $_GET['generated_image_url'] ?? null;
-
-    // Validar que el id_producto sea un número válido
-    if (!$product_id || !is_numeric($product_id)) {
-        echo "Producto no encontrado.";
-        exit;
-    }
 
     if (!isset($_SESSION['id_cliente'])) {
         // Si no está logueado, redirige al login
         header('Location: login.php');
         exit;
     }
+
+        // Asegúrate de que el método sea POST
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Obtén el ID del producto enviado desde el formulario
+        $product_id = $_POST['product_id'] ?? null;
+
+        if ($product_id) {
+            // Guarda el product_id como una variable global en la sesión
+            $_SESSION['product_id'] = $product_id;
+
+        } else {
+            echo "No se recibió el ID del producto.";
+        }
+    } else {
+        // Si el acceso no es mediante POST, redirige o muestra un error
+        echo "Acceso no válido.";
+    }
+
 
     // Obtén el id_cliente de la sesión
     $id_cliente = $_SESSION['id_cliente'];
@@ -219,7 +228,7 @@
                 <!-- Generar imagen y pegar URL -->
                 <div class="mb-3">
                     <label for="generate-image" class="form-label">¿Quieres generar una imagen del diseño?</label>
-                    <a href="../vistas/generarimagen.php?product_id=<?php echo $product_id; ?>" target="_blank" class="btn btn-primary">
+                    <a href="../vistas/generarimagen.php" target="_blank" class="btn btn-primary">
                         <i class="fas fa-brain"></i> Generar Imagen
                     </a>
                 </div>

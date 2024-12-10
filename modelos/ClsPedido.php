@@ -26,7 +26,7 @@ class ClsPedido{
         FROM pedido p
         INNER JOIN cliente c ON p.id_cliente = c.id_cliente
         INNER JOIN detalle_pedido dp ON p.id_pedido = dp.id_pedido
-        WHERE p.id_cliente = :id_cliente";
+        WHERE p.id_cliente = :id_cliente ORDER BY p.fecha_pedido DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id_cliente', $id_cliente, PDO::PARAM_INT);
         $stmt->execute();
