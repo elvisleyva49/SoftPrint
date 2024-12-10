@@ -249,10 +249,32 @@ class ImageGeneratorPage {
         
         $this->generator = new AzureOpenAIImageGenerator($apiKey, $azureEndpoint);
     }
+    private function validar_contexto($prompt, $productos_permitidos) {
+        foreach ($productos_permitidos as $producto) {
+            if (stripos(($prompt),($producto)) !== false) {
+                return true; // Contexto válido
+            }
+        }
+        return false; // Contexto inválido
+    }
 
     public function render() {
         $imageUrl = null;
         $error = null;
+
+        $productos_permitidos = [
+            "banners publicitarios", "baner", "banner", "volantes", "volante",
+            "tarjetas de presentación", "tarjeta presentación", "tarjetas",
+            "lonas luminosas", "lonas", "lona", "stickers adhesivos", "sticker",
+            "roll screens", "roll screen", "pines", "llaveros personalizados", 
+            "llaveros","llavero", "publicitarios", "impresión", "material gráfico",
+            "flyer", "folletos", "afiches", "material publicitario", 
+            "carteles", "cartel", "cartelera", "cartel publicitario", "publicidad exterior",
+            "poster", "póster", "paneles publicitarios", "publicidad digital", 
+            "advertisement", "material de marketing", "material promocional", 
+            "publicidad impresa", "impresión en gran formato", "impresión offset", 
+            "impresión digital", "serigrafía","tarjeta","invitacion","invitación","cumpleaños","boda","graduación","graduacion","graduaciones","gradu"
+        ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             try {
@@ -261,10 +283,15 @@ class ImageGeneratorPage {
                     throw new Exception("Por favor, ingresa un prompt");
                 }
 
-                // Generar imagen
+                if (!$this->validar_contexto($prompt, $productos_permitidos)) {
+                    throw new Exception("El texto ingresado no está relacionado con los servicios que brinda la imprenta.");
+                }else{
+                    // Generar imagen
                 $imageUrl = $this->generator->generateImage($prompt);
                 // Guardar la URL de la imagen generada en la sesión
                 $_SESSION['generated_image_url'] = $imageUrl;
+                }
+                
 
             } catch (Exception $e) {
                 $error = $e->getMessage();
@@ -354,9 +381,12 @@ class ImageGeneratorPage {
                 }
             </script>
         </html>
+        
         <?php
     }
 }
+// Nueva función para validar el contexto
+
 
 $page = new ImageGeneratorPage();
 $page->render();
