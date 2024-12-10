@@ -48,7 +48,7 @@ require('../config/conf_recaptcha.php');
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6Lcvx2MqAAAAAD-lji0Awt4DAgteYclFzTcqwhi1"></div>
+            <div class="g-recaptcha" data-sitekey="6Ldh3pUqAAAAANlwT9M1SENpTBWnb0Gr-VYT74wq"></div>
             <div class="error" id="captcha-error">Por favor, complete el reCAPTCHA</div>
 
             <input type="submit" name="login" value="Iniciar Sesión">
