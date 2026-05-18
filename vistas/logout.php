@@ -21,8 +21,8 @@ session_destroy();
 <head>
     <meta charset="UTF-8">
     <title>Cerrar Sesión</title>
-    <link rel="stylesheet" href="/css/logout.css">
-    <meta http-equiv="refresh" content="2;url=/index.php">
+    <link rel="stylesheet" href="../css/logout.css">
+    <meta http-equiv="refresh" content="2;url=../index.php">
 </head>
 <body>
     <h1>¡Has cerrado tu sesión!</h1>

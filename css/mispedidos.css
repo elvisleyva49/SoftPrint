@@ -1,137 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    color: #334155;
+    background-color: #f8fafc; /* Color de fondo muy suave, panel de control */
     min-height: 100vh;
-    text-align: center;
-    background-color: hsl(0, 0%, 75%);
-
 }
 
-h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    font-size: 46px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+/* Contenedor principal estilo Dashboard */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-table {
-    width: 100%;
-    max-width: 1500px;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    font-size: 16px;
-}
-
-th, td {
-    padding: 20px 30px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #041291;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-tr:hover {
-    background-color: #eef5ff;
-    transition: background-color 0.3s;
-}
-
-a {
-    margin-top: 10px;
-    text-decoration: none;
-    color: #041291;
-    font-weight: bold;
-    padding: 8px 12px;
-    border: 2px solid #041291;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
-    display: inline-flex;
+/* Cabecera del Dashboard */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    min-width: 140px;
+    margin-bottom: 30px;
 }
 
-.detalle {
-    margin-top: 10px;
-    text-decoration: none;
-    color: #041291;
-    font-weight: bold;
-    padding: 8px 12px;
-    border: 2px solid #041291;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
-    display: inline-flex;
-    align-items: center;
-    min-width: 10px;
+.dashboard-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    text-shadow: none;
 }
 
-.detalle:hover {
-    background-color: #041291;
-    color: white;
-    transform: scale(1.05);
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
-}
-
-.detalle i {
-    margin-right: 8px;
-}
-
-a i {
-    margin-right: 8px;
-}
-
-a:hover {
-    background-color: #041291;
-    color: white;
-    transform: scale(1.05);
-}
-
-p {
-    font-size: 16px;
-    color: #666;
-    margin-top: 40px;
-    max-width: 600px;
-    line-height: 1.6;
-}
-
+/* Botón de volver arriba */
 .btn-volver {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #949494,#404246);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px;
+    background-color: #ffffff;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    text-decoration: none;
 }
 
 .btn-volver i {
@@ -139,10 +55,197 @@ p {
 }
 
 .btn-volver:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #f1f5f9;
+    color: #0f172a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.btn-volver:focus {
+/* Tarjeta principal que contiene la tabla */
+.table-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+}
+
+/* Diseño de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 20px 24px;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+th {
+    background-color: #041291; /* Azul original restaurado */
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+    border-bottom: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr {
+    transition: background-color 0.2s ease;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Select de Estados (Badges) */
+.td-estado select {
+    appearance: none;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 8px 30px 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: all 0.2s ease;
+}
+
+.td-estado select:focus {
     outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Botones de Acción de la tabla */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button.detalle, a.detalle {
+    background-color: #ffffff;
+    color: #3b82f6;
+    border: 1px solid #bfdbfe;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+button.detalle i, a.detalle i {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+button.detalle:hover, a.detalle:hover {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+    transform: translateY(-1px);
+}
+
+/* Mensaje vacío */
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: #64748b;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.empty-state p {
+    font-size: 16px;
+}
+
+/* Modal de Imagen (para detalle de pedido) */
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal.show {
+    display: flex;
+}
+
+#modal img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+#modal span {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 35px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#modal span:hover {
+    transform: scale(1.1);
+    color: #ef4444;
+}
+
+/* Estilos para botones de pago en la tabla */
+.pagar-btn {
+    background-color: #10b981;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.pagar-btn:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.1);
+}
+
+.pago-si {
+    color: #10b981;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }

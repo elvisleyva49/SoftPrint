@@ -1,9 +1,11 @@
 <?php
   require_once '../vendor/autoload.php';
 
-  $clientID = '682277659949-921nbukvt3i42if1pv267cb4htb0nop4.apps.googleusercontent.com';
-  $clientSecret = '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';
-  $redirectUri = 'http://localhost/PRUEBA/hola.php';
+  $config = require __DIR__ . '/config.php';
+
+  $clientID = $config['GOOGLE_CLIENT_ID'];
+  $clientSecret = $config['GOOGLE_CLIENT_SECRET'];
+  $redirectUri = $config['GOOGLE_REDIRECT_URI'];
 
   $client = new Google_Client();
   $client->setClientId($clientID);

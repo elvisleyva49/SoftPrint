@@ -16,26 +16,26 @@
             
             <?php if (isset($_SESSION['usuario']) && $_SESSION['estado'] === 'activo'): ?>
                 <?php if ($_SESSION['tipo'] === 'admin'): ?>
-                    <li><a href="../vistas/menu_ingreso.php"><i class="fas fa-arrow-up"></i> Ingresos</a></li>
-                    <li><a href="../vistas/miperfil.php"><i class="fas fa-user"></i> Mi Perfil</a></li>
-                    <li><a href="../vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    <li><a href="vistas/menu_ingreso.php"><i class="fas fa-arrow-up"></i> Ingresos</a></li>
+                    <li><a href="vistas/miperfil.php"><i class="fas fa-user"></i> Mi Perfil</a></li>
+                    <li><a href="vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 <?php elseif ($_SESSION['tipo'] === 'diseñador'): ?>
-                    <li><a href="../vistas/pedidos_asignados.php"><i class="fas fa-envelope"></i> Revisar Pedidos</a></li>
-                    <li><a href="../vistas/generarimagen2.php"><i class="fas fa-brain"></i> Generar Imagen</a></li>
-                    <li><a href="../vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    <li><a href="vistas/pedidos_asignados.php"><i class="fas fa-envelope"></i> Revisar Pedidos</a></li>
+                    <li><a href="vistas/generarimagen2.php"><i class="fas fa-brain"></i> Generar Imagen</a></li>
+                    <li><a href="vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 <?php elseif ($_SESSION['tipo'] === 'cajero'): ?>
-                    <li><a href="../vistas/historial_citas.php"><i class="fas fa-calendar-alt"></i> Citas</a></li>
-                    <li><a href="../vistas/pedidos.php"><i class="fas fa-envelope"></i> Asignar Pedido</a></li>
-                    <li><a href="../vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    <li><a href="vistas/historial_citas.php"><i class="fas fa-calendar-alt"></i> Citas</a></li>
+                    <li><a href="vistas/pedidos.php"><i class="fas fa-envelope"></i> Asignar Pedido</a></li>
+                    <li><a href="vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 <?php else: ?>
-                    <li><a href="../vistas/registrar_cita.php"><i class="fas fa-calendar-alt"></i> Citas</a></li>
-                    <li><a href="../vistas/mispedidos.php"><i class="fas fa-envelope"></i> Mis Pedidos</a></li>
-                    <li><a href="../vistas/miperfil.php"><i class="fas fa-user"></i> Mi Perfil</a></li>
-                    <li><a href="../vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    <li><a href="vistas/registrar_cita.php"><i class="fas fa-calendar-alt"></i> Citas</a></li>
+                    <li><a href="vistas/mispedidos.php"><i class="fas fa-envelope"></i> Mis Pedidos</a></li>
+                    <li><a href="vistas/miperfil.php"><i class="fas fa-user"></i> Mi Perfil</a></li>
+                    <li><a href="vistas/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 <?php endif; ?>
             <?php else: ?>
-                <li><a href="../vistas/login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <li><a href="../vistas/registrar.php"><i class="fas fa-user-plus"></i> Registrarme</a></li>
+                <li><a href="vistas/login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="vistas/registrar.php"><i class="fas fa-user-plus"></i> Registrarme</a></li>
             <?php endif; ?>
         </ul>
     </nav>

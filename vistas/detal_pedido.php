@@ -27,65 +27,66 @@ foreach ($datos as $fila) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Pedido</title>
+    <title>Detalle del Pedido | SoftPrint</title>
     <!-- Enlace a Font Awesome para los íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/detalle_pedido.css"> 
+    <!-- Unificamos estilos usando el CSS moderno del dashboard -->
+    <link rel="stylesheet" href="../css/mispedidos.css"> 
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="dashboard-container">
+        <div class="dashboard-header">
             <h1>Detalle del Pedido</h1>
+            <button class="btn-volver" onclick="window.location.href='pedidos_asignados.php';">
+                <i class="fas fa-arrow-left"></i> Volver a Mis Pedidos
+            </button>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Descripción</th>
-                    <?php if ($mostrarAltura): ?>
-                        <th>Altura</th>
-                    <?php endif; ?>
-                    <?php if ($mostrarAncho): ?>
-                        <th>Ancho</th>
-                    <?php endif; ?>
-                    <th>Cantidad</th>
-                    <th>Insumo</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($datos as $fila1): ?>
+        <div class="table-card">
+            <table>
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($fila1['nombre_producto']) ?></td>
-                        <td><?= htmlspecialchars($fila1['descripcion']) ?></td>
+                        <th>Producto</th>
+                        <th>Descripción</th>
                         <?php if ($mostrarAltura): ?>
-                            <td><?= htmlspecialchars($fila1['altura']) ?></td>
+                            <th>Altura</th>
                         <?php endif; ?>
                         <?php if ($mostrarAncho): ?>
-                            <td><?= htmlspecialchars($fila1['ancho']) ?></td>
+                            <th>Ancho</th>
                         <?php endif; ?>
-                        <td><?= htmlspecialchars($fila1['cantidad']) ?></td>
-                        <td><?= htmlspecialchars($fila1['insumo']) ?></td>
-                        <td>
-                        <button onclick="mostrarImagen('<?= htmlspecialchars($fila1['url_img']) ?>')">
-                            <i class="fas fa-image"></i> Ver Prediseño
-                        </button>
-
-                        </td>
+                        <th>Cantidad</th>
+                        <th>Insumo</th>
+                        <th>Acción</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-
-        <button class="btn-volver" onclick="window.location.href='pedidos_asignados.php';">
-            <i class="fas fa-arrow-left"></i> Volver a Mis Pedidos
-        </button>
- 
+                </thead>
+                <tbody>
+                    <?php foreach ($datos as $fila1): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($fila1['nombre_producto']) ?></td>
+                            <td><?= htmlspecialchars($fila1['descripcion']) ?></td>
+                            <?php if ($mostrarAltura): ?>
+                                <td><?= htmlspecialchars($fila1['altura']) ?></td>
+                            <?php endif; ?>
+                            <?php if ($mostrarAncho): ?>
+                                <td><?= htmlspecialchars($fila1['ancho']) ?></td>
+                            <?php endif; ?>
+                            <td><?= htmlspecialchars($fila1['cantidad']) ?></td>
+                            <td><?= htmlspecialchars($fila1['insumo']) ?></td>
+                            <td>
+                                <!-- Se usa la clase 'detalle' para mantener el estilo de botón del dashboard -->
+                                <button class="detalle" onclick="mostrarImagen('<?= htmlspecialchars($fila1['url_img']) ?>')">
+                                    <i class="fas fa-image"></i> Ver Prediseño
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Ventana Modal para ver la imagen -->
         <div id="modal">
-            <span onclick="cerrarModal()">X</span>
+            <span onclick="cerrarModal()">&times;</span>
             <img id="imagenModal" src="" alt="Prediseño">
         </div>
     </div>
