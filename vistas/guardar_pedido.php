@@ -4,9 +4,14 @@
     $img_url = $_GET['generated_image_url'] ?? null;
 
     if (!isset($_SESSION['id_cliente'])) {
-        // Si no está logueado, redirige al login
-        header('Location: login.php');
-        exit;
+        // Si está logueado pero no tiene id_cliente (ej. es admin o no completó su registro)
+        if (isset($_SESSION['usuario'])) {
+            die('Solo los clientes con perfil completo pueden agregar productos. Si eres Administrador/Trabajador, no puedes realizar pedidos.');
+        } else {
+            // Si no está logueado, redirige al login
+            header('Location: login.php');
+            exit;
+        }
     }
 
         // Asegúrate de que el método sea POST

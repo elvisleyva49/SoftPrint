@@ -57,16 +57,17 @@ class UsuarioControlador {
                     $_SESSION['tipo'] = $resultado['tipo'];
                 }
                 if($resultado['tipo'] == 'cliente'){
-                    echo "<script>alert('Bienvenido, " . $_SESSION['nombre'] . " al sistema: " . "');</script>";
-                // Redirigir a una página de bienvenida o a otra parte de la aplicación
+                    $_SESSION['welcome_message'] = "Bienvenido, " . $_SESSION['nombre'];
                 }else{
-                    echo "<script>alert('Bienvenido, " . $email . ". Tipo: " . $_SESSION['tipo'] . "');</script>";
+                    $_SESSION['welcome_message'] = "Bienvenido, " . $email . " (" . $_SESSION['tipo'] . ")";
                 }
-
-                echo "<script>window.location.href='../index.php';</script>"; // Redirigir a la página de bienvenida
+                header("Location: ../index.php");
+                exit();
             } else {
-                echo "<script>alert('Correo o contraseña incorrectos.');</script>";
-                echo "<script>window.location.href='../vistas/login.php';</script>"; // Redirigir a la página de inicio de sesión
+                session_start();
+                $_SESSION['error_message'] = "Correo o contraseña incorrectos.";
+                header("Location: ../vistas/login.php");
+                exit();
             }
         }
     }

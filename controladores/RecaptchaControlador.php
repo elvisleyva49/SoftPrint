@@ -1,7 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     // Verificar reCAPTCHA primero
-    $recaptcha_secret = "6Lcvx2MqAAAAALZ1hoAqRr3MqChMrc2CqNam5oIN";
+    $config = require __DIR__ . '/../config/config.php';
+    $recaptcha_secret = $config['RECAPTCHA_SECRET_KEY'];
     $response = $_POST['g-recaptcha-response'];
     
     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptcha_secret}&response={$response}");

@@ -43,25 +43,31 @@ if (isset($id_usuario)) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Pedidos Pendientes</title>
+    <title>Pedidos Asignados | SoftPrint</title>
     <link rel="stylesheet" href="../css/mispedidos.css">
-    <link rel="stylesheet" href="../css/pagar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Pedidos Asignados</h1>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Pedidos Asignados</h1>
+            <button onclick="location.href='../index.php'" class="btn-volver">
+                <i class="fas fa-home"></i> Volver al Inicio
+            </button>
+        </div>
 
     <!-- Mostrar pedidos asignados al diseñador -->
     <?php if (isset($pedidosporDesigner) && count($pedidosporDesigner) > 0): ?>
-        <table>
-            <tr>
-                <th>Nombre Cliente</th>
-                <th>Apellido Cliente</th>
-                <th>Descripción</th>
-                <th>Fecha Pedido</th>
-                <th>Estado</th>
-                <th>Acción</th>
-            </tr>
+        <div class="table-card">
+            <table>
+                <tr>
+                    <th>Nombre Cliente</th>
+                    <th>Apellido Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha Pedido</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
             <?php foreach ($pedidosporDesigner as $pedido): ?>
                 <tr>
                     <td><?= htmlspecialchars($pedido['nombre_cliente']) ?></td>
@@ -77,30 +83,28 @@ if (isset($id_usuario)) {
                     </select>
                 </td>
                     <td>
-                    <button class="detalle" onclick="obtenerEstadoSeleccionado(this.closest('tr'))" data-id_pedido="<?= $pedido['id_pedido']; ?>">
-                    <i class="fas fa-info-circle"></i> Actualizar Estado
-                    </button>
-
-                        <a href="detal_pedido.php?accion=verDetallePedido&id_pedido=<?= $pedido['id_pedido'] ?>" class="detalle">
-                            <i class="fas fa-info-circle"></i> Detalle Pedido
-                        </a>
+                        <div class="action-buttons">
+                            <button class="detalle" onclick="obtenerEstadoSeleccionado(this.closest('tr'))" data-id_pedido="<?= $pedido['id_pedido']; ?>">
+                                <i class="fas fa-sync-alt"></i> Actualizar
+                            </button>
+                            <a href="detal_pedido.php?accion=verDetallePedido&id_pedido=<?= $pedido['id_pedido'] ?>" class="detalle">
+                                <i class="fas fa-file-alt"></i> Detalles
+                            </a>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>
-        </table>
+            </table>
+        </div>
 
     <!-- Mensaje si no hay pedidos asignados al diseñador -->
     <?php else: ?>
-        <p>No se encontraron pedidos asignados a su cuenta.</p>
+        <div class="table-card empty-state">
+            <i class="fas fa-inbox"></i>
+            <p>No se encontraron pedidos asignados a su cuenta.</p>
+        </div>
     <?php endif; ?>
-
-    <div style="margin-bottom: 20px;">
-        <button onclick="location.href='/'" class="btn-volver">
-            <i class="fas fa-home"></i> Volver al Inicio
-        </button>
     </div>
-
-
     <script>
         function obtenerEstadoSeleccionado(fila) {
             // Obtiene el valor del select en la fila especificada

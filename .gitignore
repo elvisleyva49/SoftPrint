@@ -1,0 +1,14 @@
+# Dependencias de Composer
+vendor/
+
+# Archivos de configuración sensibles (¡NO SUBIR A GITHUB!)
+config/config.php
+
+# Imágenes generadas por IA u otros archivos de caché locales
+img/generadas/
+
+# Archivos de sistema / IDEs
+.DS_Store
+.vscode/
+.idea/
+*.log

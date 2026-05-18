@@ -181,7 +181,7 @@ $horariosOcupados = array_column($historialcitas, 'horario'); // Extraer solo lo
             </table>
 
             <div class="text-center mt-4">
-                <button onclick="location.href='/'" class="btn btn-secondary">
+                <button onclick="location.href='../index.php'" class="btn btn-secondary">
                     <i class="fas fa-home"></i> Volver al Inicio
                 </button>
             </div>

@@ -37,11 +37,12 @@ $departamento = $datosCliente['DEPARTAMENTO']; // Departamento
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
-    
+
     <!-- Estilos y fuentes -->
     <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="../css/barranavegacion.css">
@@ -79,7 +80,8 @@ $departamento = $datosCliente['DEPARTAMENTO']; // Departamento
             height: 250px;
             object-fit: cover;
             display: block;
-            margin: 0 auto; /* Centra la imagen */
+            margin: 0 auto;
+            /* Centra la imagen */
         }
 
         /* Texto centrado */
@@ -102,7 +104,8 @@ $departamento = $datosCliente['DEPARTAMENTO']; // Departamento
             padding: 15px;
             background-color: #f8f9fa;
             border-radius: 8px;
-            text-align: center; /* Centra el contenido */
+            text-align: center;
+            /* Centra el contenido */
         }
 
         #perfil-container .info-group h4 {
@@ -149,6 +152,7 @@ $departamento = $datosCliente['DEPARTAMENTO']; // Departamento
         }
     </style>
 </head>
+
 <body id="perfil-page">
     <?php include('../vistas/barranavegacion2.php'); ?>
 
@@ -191,26 +195,27 @@ $departamento = $datosCliente['DEPARTAMENTO']; // Departamento
     <!-- Script animación de scroll-->
     <script>
         const nav = document.querySelector('.nav');
-        window.addEventListener('scroll', function(){
+        window.addEventListener('scroll', function () {
             nav.classList.toggle('active', window.scrollY > 0);
         });
     </script>
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 
     <script type="text/javascript">
-    (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-            window.voiceflow.chat.load({
-            verify: { projectID: '672ae3e41891ba0bf93f64a6' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production'
-            });
-        }
-        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-    })(document, 'script');
+        (function (d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function () {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '6a0a914da62d285256e07621' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production'
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
     </script>
 
 </body>
+
 </html>
 <?php include('../vistas/piepagina.php'); ?>
